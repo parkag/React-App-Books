@@ -5,17 +5,17 @@ const Nav = props => (
   <>
     <nav className="menu">
       <h2>Sortuj po</h2>
-      <form action="/action_page.php">
-        <input type="radio" name="sort" onChange={props.onChange} />
+      <form>
+        <input type="radio" name="sort" onChange={() => props.onChange('pagesNumbers')} />
         ilości stron
         <br />
-        <input type="radio" name="sort" onChange={props.onChange} />
+        <input type="radio" name="sort" onChange={ () => props.onChange("dateRelease")} />
         dacie wydania
         <br />
-        <input type="radio" name="sort" onChange={props.onChange} />
+        <input type="radio" name="sort" onChange={ () => props.onChange("surnameAuthor")} />
         nazwisku autora
         <br />
-        <input type="radio" name="sort" onChange={props.onChange} />
+        <input type="radio" name="sort" onChange={ () => props.onChange("randomOrder")} />
         różnej kolejności
         <br />
       </form>

@@ -7,10 +7,16 @@ import Nav from "./Navigation";
 import SectionBooks from "./SectionBooks";
 
 class App extends Component {
-  state = {
-    users: [],
-    select: "normal"
-  };
+
+  constructor(props){
+    super(props)
+    this.handleUsersFilter = this.handleUsersFilter.bind(this)
+    this.listBooks = this.listBooks.bind(this)
+    this.state = {
+      users: [],
+      select: "normal"
+    };
+  }
 
   componentDidMount() {
     fetch("data/jsonTab.json")
@@ -30,16 +36,17 @@ class App extends Component {
     });
   }
 
-  ListBooks = () => {
+  listBooks() {
     let users = this.state.users;
     switch (this.state.select) {
       case "normal":
         return users.map(user => <BookItem key={user.id} user={user} />);
       case "pagesNumbers":
         users = users.filter(user => user.pages > 200);
-        return users.map(user => <BookItem key={user.id} user={user} />);
-      case "dateRelese":
-        return users.map(user => <BookItem key={user.id} user={user} />);
+        console.log(users)
+        return users.map(user => <BookItem key={user.id} user={user} />).sort((a,b)=>a.pages > b.pages);
+      case "dateRelease":
+        return users.map(user => <BookItem key={user.id} user={user} />).sort((a,b)=>a.releaseDate > b.releaseDate );
       case "surnameAuthor":
         return users.map(user => <BookItem key={user.id} user={user} />);
       case "randomOrder":
@@ -49,7 +56,7 @@ class App extends Component {
     }
     // users = users.map(user => <BookItem key={user.id} user={user} />);
     // return users;
-  };
+  }
 
   render() {
     return (
@@ -58,15 +65,9 @@ class App extends Component {
           <Header />
           <SectionsBottom />
           <Nav
-            onChange={this.handleUsersFilter.bind(
-              this,
-              "pagesNumber",
-              "dateRelese",
-              "surnameAuthor",
-              "randomOrder"
-            )}
+            onChange={ (option) => this.handleUsersFilter(option)}   //TOOD: TU
           />
-          <SectionBooks equivalentUsers={this.ListBooks()} />
+          <SectionBooks equivalentUsers={this.listBooks()} />
         </div>
       </>
     );
