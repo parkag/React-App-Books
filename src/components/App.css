@@ -1,0 +1,170 @@
+body {
+  margin: 20px;
+  font-family: "Lato", sans-serif;
+  background-color: #eeeeee;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: minmax(200px, 300px) minmax(280px, 1600px) auto;
+  grid-template-rows: auto 1fr;
+  height: 100vh;
+  width: 100%;
+  margin: 0 auto;
+  grid-template-areas:
+    "logo puste puste"
+    "menu gallery puste";
+}
+
+.logo {
+  z-index: 110px;
+}
+
+header .logo {
+  width: 25px;
+  height: 22px;
+  margin-top: 15px;
+  margin-left: 15px;
+  background-color: #fad84a;
+  padding: 10px;
+  position: absolute;
+}
+
+h1 {
+  font-size: 35px;
+  padding-left: 25px;
+  position: relative;
+  z-index: 10px;
+}
+
+hr.style-three {
+  border: 0;
+  border-bottom: 1px dashed #ccc;
+  z-index: 100;
+}
+
+.form_text input {
+  width: 50px;
+  height: 30px;
+  margin: 0 5px 0 5px;
+  border: none;
+}
+
+hr.new4 {
+  border-top: 1px solid #aaaaaa;
+  width: 100%;
+  margin-top: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+.centerize {
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+}
+
+button {
+  background-color: #aaaaaa;
+  color: #eeeeee;
+  border-radius: 5px;
+  border: none;
+  font-size: 16px;
+  padding: 10px 15px;
+  cursor: pointer;
+}
+
+button.hover {
+  background-color: #000;
+}
+
+.empty .style-three {
+  padding-top: 79px;
+}
+
+.menu {
+  grid-column: 1/2;
+  grid-row: 2/3;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 380px));
+  gap: 15px;
+  padding: 15px 15px;
+}
+
+.gallery img {
+  padding: 0px 100px;
+}
+
+h3,
+h4,
+p {
+  text-align: center;
+}
+
+p {
+  color: #aaaaaa;
+  font-size: 15px;
+}
+
+.lighter {
+  font-weight: lighter;
+}
+
+a {
+  color: #ff0000;
+  text-decoration: none;
+  border-bottom: dashed 1px red;
+  font-weight: bold;
+}
+
+.bolder {
+  font-size: 55px;
+  font-weight: bolder;
+  color: #d8d7d7;
+  position: relative;
+  display: inline;
+  display: flex;
+  width: 50px;
+  height: 50px;
+  top: 0;
+  left: 0;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+hr.new {
+  /* RED-LINE*/
+  border: 1px solid #ff0000;
+  background-color: #ff0000;
+  width: 30px;
+}
+
+@media (max-width: 633px) {
+  .empty .style-three {
+    padding-top: 64px;
+  }
+  .gallery {
+    padding-top: 40px;
+  }
+}
+
+@media (max-width: 560px) {
+  .grid {
+    display: grid;
+    grid-template-columns: minmax(120px, 550px);
+    grid-template-rows: auto 1fr;
+    grid-template-areas:
+      "logo"
+      "menu"
+      "gallery";
+  }
+  header .logo {
+    font-size: 100%;
+  }
+  .empty {
+    display: none;
+  }
+}
